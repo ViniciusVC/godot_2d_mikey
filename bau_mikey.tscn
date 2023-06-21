@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceh7kpbcy474n"]
+
+[ext_resource type="Texture2D" uid="uid://bg8f8gmldgqaa" path="res://assets/mikey_bau.jpg" id="1_ptai8"]
+[ext_resource type="Script" path="res://bau_mikey.gd" id="1_vm5b5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdrrd"]
+size = Vector2(30, 30)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_vm5b5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ptai8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hdrrd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

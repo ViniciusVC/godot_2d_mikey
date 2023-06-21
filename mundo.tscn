@@ -1,0 +1,1697 @@
+[gd_scene load_steps=29 format=3 uid="uid://onx4ehigl2yq"]
+
+[ext_resource type="Texture2D" uid="uid://d2vh4ti611kw8" path="res://assets/fundo_doce.jpg" id="1_4hru5"]
+[ext_resource type="Script" path="res://Player.gd" id="1_lc86o"]
+[ext_resource type="Texture2D" uid="uid://ccsr216l42j4m" path="res://assets/Mikey_parado1.png" id="2_gx066"]
+[ext_resource type="Texture2D" uid="uid://xpecu1reprxi" path="res://assets/Mikey_parado2.png" id="3_b4rw5"]
+[ext_resource type="Texture2D" uid="uid://bknc5abmwdjty" path="res://assets/Mikey_parado3.png" id="4_y6xdl"]
+[ext_resource type="Texture2D" uid="uid://oxw2ob6keonn" path="res://assets/Mikey_andando1.png" id="5_2vvy5"]
+[ext_resource type="Texture2D" uid="uid://bhvgmmegw4053" path="res://assets/Mikey_andando2.png" id="6_keorq"]
+[ext_resource type="Texture2D" uid="uid://dsk4b3bd2t328" path="res://assets/Mikey_andando3.png" id="7_bmmcd"]
+[ext_resource type="Texture2D" uid="uid://mbi3oq086lmf" path="res://assets/Mikey_andando4.png" id="8_m5psf"]
+[ext_resource type="Texture2D" uid="uid://cxrdq5u7et8b1" path="res://assets/Mikey_andando5.png" id="9_8701q"]
+[ext_resource type="Texture2D" uid="uid://l7okww0dfawu" path="res://assets/Mikey_andando6.png" id="10_ucaev"]
+[ext_resource type="Texture2D" uid="uid://dyixir3fde60u" path="res://assets/Mikey_pulando1.png" id="11_3wmpn"]
+[ext_resource type="Texture2D" uid="uid://8x2jf0xmmyo" path="res://assets/Mikey_caindo1.png" id="11_eqja4"]
+[ext_resource type="Texture2D" uid="uid://dewx1d8fovhvh" path="res://assets/Mikey_pulando2.png" id="12_a5m7u"]
+[ext_resource type="Texture2D" uid="uid://c832eujfu3keo" path="res://assets/Mikey_caindo3.png" id="12_jvhjf"]
+[ext_resource type="Texture2D" uid="uid://dj0dvh3eptwee" path="res://assets/Mikey_pulando3.png" id="13_l4uf5"]
+[ext_resource type="Texture2D" uid="uid://cs3vmd6g3165a" path="res://assets/Mikey_caindo2.png" id="13_o7w6c"]
+[ext_resource type="Texture2D" uid="uid://b7h40ynupd72b" path="res://assets/terreno_mikey_05.png" id="19_7si65"]
+[ext_resource type="Texture2D" uid="uid://c61j55dspi57p" path="res://assets/terreno_mikey_01.png" id="19_m351s"]
+[ext_resource type="Texture2D" uid="uid://uiv51b2338i8" path="res://assets/terreno_mikey_02.png" id="20_0jkyh"]
+[ext_resource type="Texture2D" uid="uid://b0s1bv685rffd" path="res://assets/terreno_mikey_03.png" id="21_qyafy"]
+[ext_resource type="Texture2D" uid="uid://qs7u1imnydio" path="res://assets/terreno_mikey_04.png" id="22_62x1v"]
+[ext_resource type="Script" path="res://NodePasue.gd" id="23_u4l0r"]
+[ext_resource type="PackedScene" uid="uid://ceh7kpbcy474n" path="res://bau_mikey.tscn" id="24_0vym2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pns8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gx066")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b4rw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y6xdl")
+}],
+"loop": true,
+"name": &"Ide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2vvy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_keorq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bmmcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m5psf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8701q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ucaev")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_eqja4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jvhjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_o7w6c")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_3wmpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_a5m7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_l4uf5")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqfbc"]
+size = Vector2(27, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwpej"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwln5"]
+size = Vector2(80, 20)
+
+[node name="Mundo1" type="Node2D"]
+position = Vector2(0, 60)
+
+[node name="FundoSprite2D" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(0, -60)
+scale = Vector2(1.4369, 1.39801)
+texture = ExtResource("1_4hru5")
+centered = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 1100)
+
+[node name="SpriteFundo2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -280)
+scale = Vector2(1.02921, 1.69154)
+texture = ExtResource("1_4hru5")
+centered = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(76, -59)
+script = ExtResource("1_lc86o")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_pns8v")
+animation = &"falling"
+frame = 1
+frame_progress = 0.0510848
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-2.5, 0.5)
+shape = SubResource("RectangleShape2D_qqfbc")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 2120
+limit_bottom = 550
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="solidosMikey" type="Node" parent="."]
+
+[node name="solo_mikey" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(200, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey37" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1980, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey37"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey37"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey40" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(980, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey40"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey40"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey42" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1060, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey42"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey42"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey44" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1020, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey44"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey44"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey46" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(940, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey46"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey46"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey26" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(340, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey26"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey26"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey35" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1900, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey35"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey35"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey22" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(280, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey22"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey22"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey24" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(360, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey24"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey24"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey27" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(260, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey27"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey27"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey2" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(220, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey2"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey2"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey36" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1940, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey36"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey36"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey21" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(240, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey21"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey21"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey38" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(940, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey38"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey38"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey41" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1020, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey41"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey41"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey43" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1060, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey43"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey43"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey45" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(980, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey45"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey45"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey54" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1860, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey54"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey54"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey55" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(300, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey55"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey55"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey23" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(320, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey23"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey23"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey25" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(380, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey25"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey25"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey3" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 180)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey3"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey3"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey16" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 220)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey16"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey16"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey51" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 260)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey51"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey51"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey52" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey52"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey52"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey53" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(40, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey53"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey53"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey17" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(80, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey17"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey17"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey18" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(120, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey18"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey18"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey19" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(160, 300)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey19"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey19"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey80" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(520, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey80"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey80"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey81" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(640, 100)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey81"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey81"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey82" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(600, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey82"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey82"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey83" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(940, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey83"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey83"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey84" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(560, 100)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey84"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey84"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey85" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(520, 100)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey85"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey85"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey86" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(560, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey86"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey86"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey87" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(600, 100)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey87"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey87"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey88" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(640, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey88"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey88"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey89" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(940, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey89"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey89"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey90" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(400, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey90"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey90"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey94" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(360, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey94"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey94"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey95" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(320, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey95"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey95"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey96" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(280, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey96"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey96"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey97" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(240, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey97"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey97"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey91" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(440, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey91"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey91"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey92" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(480, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey92"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey92"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey93" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(420, 420)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey93"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey93"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey100" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(440, 460)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey100"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey100"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey101" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(480, 500)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey101"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey101"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey20" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(2020, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey20"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey20"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey4" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 140)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey4"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey4"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey5" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 100)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey5"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey5"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey6" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey6"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey6"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey7" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, 20)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey7"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey7"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey8" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(0, -20)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey8"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey8"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey9" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(120, -20)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey9"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey9"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey10" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(120, 20)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey10"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey10"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey11" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(120, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey11"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey11"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey12" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(160, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey12"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey12"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey28" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(200, 60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey28"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey28"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey29" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1740, 240)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey29"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey29"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey31" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1780, 200)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey31"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey31"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey32" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1300, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey32"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey32"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey33" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1260, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey33"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey33"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey47" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1100, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey47"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey47"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey58" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1020, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey58"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey58"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey59" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1100, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey59"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey59"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey60" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1060, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey60"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey60"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey61" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(980, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey61"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey61"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey62" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(980, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey62"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey62"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey63" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1060, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey63"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey63"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey64" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1100, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey64"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey64"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey65" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1020, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey65"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey65"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey70" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1540, 320)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey70"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey70"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey71" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1620, 320)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey71"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey71"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey72" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1580, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey72"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey72"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey73" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1500, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey73"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("19_m351s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey73"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey74" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1500, 320)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey74"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey74"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey75" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1580, 320)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey75"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey75"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey76" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1620, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey76"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey76"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey77" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1540, 360)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey77"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("20_0jkyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey77"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey66" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(400, 380)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey66"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey66"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey48" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1140, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey48"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey48"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey49" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1180, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey49"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey49"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey50" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1220, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey50"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey50"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey39" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(2020, 40)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey39"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey39"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey56" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(2020, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey56"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey56"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey57" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(2020, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey57"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey57"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey34" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1820, 160)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey34"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey34"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey30" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1660, 320)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey30"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey30"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey69" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1380, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey69"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey69"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey78" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1420, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey78"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey78"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey79" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1460, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey79"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey79"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey68" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1340, 340)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey68"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey68"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey67" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1700, 280)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey67"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey67"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey13" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(920, 380)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey13"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey13"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey98" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(880, 420)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey98"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey98"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey99" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(840, 460)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey99"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey99"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey102" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(800, 500)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey102"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey102"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey103" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(760, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey103"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey103"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey104" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(720, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey104"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey104"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey105" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(680, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey105"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey105"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey106" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(600, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey106"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey106"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey109" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(640, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey109"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey109"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey107" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(560, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey107"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey107"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey108" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(520, 540)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey108"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey108"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey14" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(120, -60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey14"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey14"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="solo_mikey15" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(120, -60)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/solo_mikey15"]
+position = Vector2(20, 20)
+scale = Vector2(1.25, 1.29032)
+texture = ExtResource("21_qyafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/solo_mikey15"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_iwpej")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(500, 310)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(640, 310)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D2"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(800, 310)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D3"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1720, 120)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D4"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1640, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D5"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1560, 40)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D6"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D6"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1420, 40)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D7"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D7"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(1260, 40)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D8"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D8"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="solidosMikey"]
+position = Vector2(820, 80)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="solidosMikey/StaticBody2D9"]
+texture = ExtResource("22_62x1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="solidosMikey/StaticBody2D9"]
+shape = SubResource("RectangleShape2D_dwln5")
+
+[node name="enfeitesMikey" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="enfeitesMikey"]
+position = Vector2(660, 500)
+texture = ExtResource("19_7si65")
+
+[node name="Sprite2D2" type="Sprite2D" parent="enfeitesMikey"]
+z_index = 59
+position = Vector2(140, 260)
+texture = ExtResource("19_7si65")
+
+[node name="Sprite2D3" type="Sprite2D" parent="enfeitesMikey"]
+z_index = 59
+position = Vector2(1040, 260)
+texture = ExtResource("19_7si65")
+
+[node name="Sprite2D4" type="Sprite2D" parent="enfeitesMikey"]
+z_index = 59
+position = Vector2(1940, 80)
+texture = ExtResource("19_7si65")
+
+[node name="NodePasue" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("23_u4l0r")
+
+[node name="Label" type="Label" parent="NodePasue"]
+offset_left = 260.0
+offset_right = 380.0
+offset_bottom = 100.0
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="Area2D" parent="." instance=ExtResource("24_0vym2")]
+position = Vector2(200, -20)
